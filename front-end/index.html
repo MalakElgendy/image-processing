@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>images</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+            background: #f9f9f9;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        img {
+            max-width: 150px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .resizer,
+        .uploader {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>image resizer</h1>
+    <div class="gallery" id="gallery"></div>
+    <div class="resizer">
+        <h2>resize an image</h2>
+        <form id="resize-form">
+            <label>select image:
+                <select id="filename" required></select>
+            </label>
+            <label>
+                width: <input type="number" id="width" required />
+            </label>
+            <label>
+                height: <input type="number" id="height" required />
+            </label>
+            <button type="submit">resize</button>
+        </form>
+        <div id="resized-result"></div>
+    </div>
+    <div class="uploader">
+        <h2>upload a new .jpg image</h2>
+        <form enctype="multipart/form-data" id="upload-form">
+            <input type="file" name="image" accept=".jpg" required />
+            <button type="submit">upload</button>
+        </form>
+        <div id="upload-msg"></div>
+    </div>
+    <script>
+        const gallery = document.getElementById('gallery')
+        const filenameSelect = document.getElementById('filename')
+        const resizedResult = document.getElementById('resized-result')
+        const uploadMsg = document.getElementById('upload-msg')
+
+        async function loadImages() {
+            const res = await fetch('/api/images')
+            const images = await res.json()
+
+            gallery.innerHTML = ''
+            filenameSelect.innerHTML = ''
+
+            images.forEach(name => {
+                const img = document.createElement('img')
+                img.src = `../uploads/${name}`;
+                img.alt = name;
+                img.style.cursor = 'pointer';
+                img.addEventListener('click', () => {
+                    filenameSelect.value = name;
+                });
+                gallery.appendChild(img);
+
+                const option = document.createElement('option')
+                option.value = name
+                option.textContent = name
+                filenameSelect.appendChild(option)
+
+            });
+        }
+        document.getElementById('resize-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const filename = document.getElementById('filename').value;
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+
+            const res = await fetch(`/api/resize?filename=${filename}&width=${width}&height=${height}`);
+            if (res.ok) {
+                const apiURL = res.url;
+                const img = document.createElement('img');
+                img.src = apiURL;
+
+                resizedResult.innerHTML = `
+        <p>Resized image:</p>
+        <a href="${apiURL}" target="_blank">${apiURL}</a><br/>
+    `;
+                resizedResult.appendChild(img);
+            } else {
+                resizedResult.innerHTML = '<p>error resizing image</p>';
+            }
+        });
+        document.getElementById('upload-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const res = await fetch('/api/upload', {
+                method: 'POST',
+                body: formData
+            });
+            if (res.ok) {
+                uploadMsg.textContent = 'image uploaded successfully';
+                e.target.reset();
+                await loadImages();
+            } else {
+                uploadMsg.textContent = 'error uploading ,only jpg allowed'
+            }
+        });
+        loadImages();
+    </script>
+</body>
+
+</html>
