@@ -2,42 +2,42 @@
 
 ### this project is backend API build with Node.js,Express,Typescript,Multer,Sharp that allows user to:
 
-1. upload .jpg only images
-2. resize image and download it
-3. view uploaded images in gallery
+1. upload .jpg only images\
+2. resize image and download it\
+3. view uploaded images in gallery\
 
 ---
 
 ## More into project :
- Uploading images requires .jpg files can be uploaded by multer with file validation 
+ Uploading images requires .jpg files can be uploaded by multer with file validation\
 
- Resizing images resized images can be downloaded locally with specified width and height 
+ Resizing images resized images can be downloaded locally with specified width and height\
 
- Error handling with try and catch or if conditions
+ Error handling with try and catch or if conditions\
 
- Testing with jasmine to test API endpoints and functions
+ Testing with jasmine to test API endpoints and functions\
 
- Typescript to write the whole code which will be translated to javascript using <npm run build>
+ Typescript to write the whole code which will be translated to javascript using <npm run build>\
 
- Eslint and prettier to make sure the code is formatted 
+ Eslint and prettier to make sure the code is formatted\ 
 
- Front-end to display the gallery and allows the user to interact with various choices
+ Front-end to display the gallery and allows the user to interact with various choices\
 
 ## To download :
 
 ### Prerequisites:
-1. node.js(>= 14.x) &i recommend using 20.11.1&
+1. node.js(>= 14.x) &i recommend using 20.11.1&\
 
-2. npm
+2. npm\
 
 ## Installation via Githup :
- git clone https://github.com/MalakElgendy/image-processing.git
- cd image-processing
+ git clone https://github.com/MalakElgendy/image-processing.git\
+ cd image-processing\
 
 ## Instal dependencies
- npm install
- npm install node_modules(in case if its removed)
- The server will start on http://localhost:3000 by default.
+ npm install\
+ npm install node_modules(in case if its removed)\
+ The server will start on http://localhost:3000 by default.\
 
 ---
 
@@ -60,19 +60,19 @@
 ## Api endpoints
 
 1. upload image
-Url:/api/upload
-Method:post
-Description:upload a .jpg image file
+Url:/api/upload\
+Method:post\
+Description:upload a .jpg image file\
 
 2. resize image
-Url:/api/resize
-Method:get
-Description:user needs to write width and height 
+Url:/api/resize\
+Method:get\
+Description:user needs to write width and height \
 
 3. List Available Images
-Url: /api/images
-Method: GET
-Description: Returns a JSON array of all uploaded images available for processing.
+Url: /api/images\
+Method: GET\
+Description: Returns a JSON array of all uploaded images available for processing.\
 
 ---
 
