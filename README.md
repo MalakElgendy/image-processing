@@ -1,30 +1,75 @@
-Image Processing API with Node.js, Express, and TypeScript
-Overview
-this project is backend API build with node.js,express,typescript,multer,sharp that allows user to:
-upload .jpg only images
-resize image and download it
-view uploaded images in gallery
+# Image Processing API with Node.js, Express, and TypeScript Overview:-
 
-more into project :
-uploading images requires .jpg files can be uploaded by multer with file validation 
+### this project is backend API build with Node.js,Express,Eypescript,Multer,Sharp that allows user to:
 
-resizing images resized images can be downloaded locally with specifyed width and height 
+1. upload .jpg only images
+2. resize image and download it
+3. view uploaded images in gallery
 
-error handling with try and catch or if conditions
+## More into project :
+. Uploading images requires .jpg files can be uploaded by multer with file validation 
 
-testing with jasmine to test API endpoints and functions
+. Resizing images resized images can be downloaded locally with specifyed width and height 
 
-typescript to write the whole code which will be translated to javascript using <npm run build>
+. Rrror handling with try and catch or if conditions
 
-eslint and prettier to make sure the code is formatted 
+. Testing with jasmine to test API endpoints and functions
 
-front-end to display the gallery and allows the user to interact with various choices
+. Typescript to write the whole code which will be translated to javascript using <npm run build>
 
-to download :
+. Eslint and prettier to make sure the code is formatted 
 
-prerequisites:
-node.js(>= 14.x) &i recommend using 20.11.1&
+. Front-end to display the gallery and allows the user to interact with various choices
 
-npm
+## To download :
 
-installation via githup 
+### Prerequisites:
+1. node.js(>= 14.x) &i recommend using 20.11.1&
+
+2. npm
+
+## Installation via githup :
+. git clone https://github.com/MalakElgendy/image-processing.git
+. cd image-processing
+
+## Instal dependencies
+. npm install
+. npm install node_modules(in case if its removed)
+. The server will start on http://localhost:3000 by default.
+
+## Avaliable scripts
+
+```npm run start``` <run the compiled js server>
+
+```npm run build``` <compile ts to js>
+
+```npm run dev``` <run nodemon>
+
+```npm run test``` <run jasmine tests>
+
+```npm run lint``` <run eslint checks>
+
+```npm run prettier``` <to fix the format>
+
+
+## Api endpoints
+
+1. upload image
+Url:/api/upload
+Method:post
+Description:upload a .jpg image file
+
+2. resize image
+Url:/api/resize
+Method:get
+Description:user needs to write width and height 
+
+3. List Available Images
+Url: /api/images
+Method: GET
+Description: Returns a JSON array of all uploaded images available for processing.
+
+## Development notes:
+* typescript is in src/ and compiled to build/
+* uploaded images are saved in /uploads which is also the same folder used to display the gallery
+* front-end (html) are served from /front-end 
