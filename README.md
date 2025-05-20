@@ -1,25 +1,27 @@
 # Image Processing API with Node.js, Express, and TypeScript Overview:-
 
-### this project is backend API build with Node.js,Express,Eypescript,Multer,Sharp that allows user to:
+### this project is backend API build with Node.js,Express,Typescript,Multer,Sharp that allows user to:
 
 1. upload .jpg only images
 2. resize image and download it
 3. view uploaded images in gallery
 
+---
+
 ## More into project :
-. Uploading images requires .jpg files can be uploaded by multer with file validation 
+ Uploading images requires .jpg files can be uploaded by multer with file validation 
 
-. Resizing images resized images can be downloaded locally with specifyed width and height 
+ Resizing images resized images can be downloaded locally with specified width and height 
 
-. Rrror handling with try and catch or if conditions
+ Error handling with try and catch or if conditions
 
-. Testing with jasmine to test API endpoints and functions
+ Testing with jasmine to test API endpoints and functions
 
-. Typescript to write the whole code which will be translated to javascript using <npm run build>
+ Typescript to write the whole code which will be translated to javascript using <npm run build>
 
-. Eslint and prettier to make sure the code is formatted 
+ Eslint and prettier to make sure the code is formatted 
 
-. Front-end to display the gallery and allows the user to interact with various choices
+ Front-end to display the gallery and allows the user to interact with various choices
 
 ## To download :
 
@@ -28,16 +30,18 @@
 
 2. npm
 
-## Installation via githup :
-. git clone https://github.com/MalakElgendy/image-processing.git
-. cd image-processing
+## Installation via Githup :
+ git clone https://github.com/MalakElgendy/image-processing.git
+ cd image-processing
 
 ## Instal dependencies
-. npm install
-. npm install node_modules(in case if its removed)
-. The server will start on http://localhost:3000 by default.
+ npm install
+ npm install node_modules(in case if its removed)
+ The server will start on http://localhost:3000 by default.
 
-## Avaliable scripts
+---
+
+## Available scripts
 
 ```npm run start``` <run the compiled js server>
 
@@ -51,6 +55,7 @@
 
 ```npm run prettier``` <to fix the format>
 
+---
 
 ## Api endpoints
 
@@ -68,6 +73,8 @@ Description:user needs to write width and height
 Url: /api/images
 Method: GET
 Description: Returns a JSON array of all uploaded images available for processing.
+
+---
 
 ## Development notes:
 * typescript is in src/ and compiled to build/
